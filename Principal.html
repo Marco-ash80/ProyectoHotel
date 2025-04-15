@@ -5,24 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hotel Mi Refugio</title>
   <link rel="stylesheet" href="styles.css">
+  <script>
+    function actualizarReloj() {
+      const ahora = new Date();
+      const opciones = { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+      document.getElementById('reloj').innerText = ahora.toLocaleDateString('es-ES', opciones);
+    }
+    setInterval(actualizarReloj, 1000);
+  </script>
 </head>
+
 <body>
-  <header>
+  <header style="text-align: center; background: #3498db; color: white; padding: 20px;">
     <h1>Bienvenidos a Hotel Mi Refugio</h1>
     <nav>
       <a href="index.html">Inicio</a>
       <a href="habitaciones.html">Habitaciones</a>
       <a href="reservacion.html">Reservar</a>
+      <a href="contacto.html">Contacto</a>
     </nav>
+    <div id="reloj" style="margin-top: 10px; font-size: 18px;"></div>
   </header>
-  <main>
+
+  <main style="text-align: center; padding: 40px;">
     <section>
-      <h2>Nuestro hotel</h2>
-      <p>Detalles increíbles sobre el hotel aquí...</p>
+      <h2>Tu refugio en la playa</h2>
+      <p>Disfruta de un espacio de tranquilidad, comodidad y vistas paradisíacas.</p>
     </section>
   </main>
-  <footer>
+
+  <footer style="background: #2c3e50; color: white; text-align: center; padding: 20px;">
     <p>Contacto: info@hotelmiRefugio.com</p>
   </footer>
+
+  <script> actualizarReloj(); </script>
 </body>
 </html>
