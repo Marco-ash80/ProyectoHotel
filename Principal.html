@@ -3,41 +3,154 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hotel Mi Refugio</title>
-  <link rel="stylesheet" href="styles.css">
-  <script>
-    function actualizarReloj() {
-      const ahora = new Date();
-      const opciones = { weekday: 'long', day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-      document.getElementById('reloj').innerText = ahora.toLocaleDateString('es-ES', opciones);
-    }
-    setInterval(actualizarReloj, 1000);
-  </script>
+  <title>Hotel Olas de Libertad</title>
+  <link rel="stylesheet" href="Diseños/inicio.css">
+  <style>
+    /* Estilos del carrusel */
+ 
+  .carrusel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+  }
+
+  .carrusel-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .carrusel-items div {
+    position: absolute;
+    transition: opacity 1s ease-in-out;
+  }
+
+
+  .carrusel-items img.current {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+
+  .carrusel-items img.previous, .carrusel-items img.next {
+    opacity: 0.7;
+  }
+
+  .carrusel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .carrusel-button.prev { left: 10px; }
+  .carrusel-button.next { right: 10px; }
+
+  </style>
 </head>
-
 <body>
-  <header style="text-align: center; background: #3498db; color: white; padding: 20px;">
-    <h1>Bienvenidos a Hotel Mi Refugio</h1>
+
+  <!-- Contenedor principal -->
+  <div class="container">
     <nav>
-      <a href="index.html">Inicio</a>
-      <a href="habitaciones.html">Habitaciones</a>
-      <a href="reservacion.html">Reservar</a>
-      <a href="contacto.html">Contacto</a>
+      <img src="logo" class="logo" alt="Logo del Hotel Olas de Libertad">
+      <ul>
+        <li class="active"><a href="">Inicio</a></li>
+        <li><a href="">Habitaciones</a></li>
+        <li><a href="">Reservaciones</a></li>
+        <li><a href="">Servicios</a></li>
+        <li><a href="">Contactanos</a></li>
+        <li><a href="">Acerca de nosotros</a></li>
+        <li><a href="">Opiniones</a></li>
+      </ul>
     </nav>
-    <div id="reloj" style="margin-top: 10px; font-size: 18px;"></div>
-  </header>
 
-  <main style="text-align: center; padding: 40px;">
-    <section>
-      <h2>Tu refugio en la playa</h2>
-      <p>Disfruta de un espacio de tranquilidad, comodidad y vistas paradisíacas.</p>
-    </section>
-  </main>
+    <div class="text">
+      <h2>Hotel Olas de Libertad</h2>
+      <h3>¿Cansado de la rutina? ¡Escapate a este Paraiso! </h3>
+      <p>Disfruta de la tranquilidad y la belleza de la naturaleza en nuestro hotel. Ofrecemos habitaciones cómodas y servicios excepcionales para que tu estancia sea inolvidable.</p>
+    </div>
 
-  <footer style="background: #2c3e50; color: white; text-align: center; padding: 20px;">
-    <p>Contacto: info@hotelmiRefugio.com</p>
-  </footer>
+    <!-- Carrusel de imágenes -->
+    <div class="carrusel">
+      <button class="carrusel-button prev">&#10094;</button>
+      <div class="carrusel-items">
+        <div>
+          <img src="Diseños/cuarto.jpg" alt="Cuartos de lujo">
+          <h2>Cuartos de lujo</h2>
+        </div>
+        <div>
+          <img src="Diseños/Vista.jpg" alt="De las mejores vistas">
+          <h2>De las mejores vistas</h2>
+        </div>
+        <div>
+          <img src="Diseños/comida.jpg" alt="Para chuparse los dedos">
+          <h2>Para chuparse los dedos</h2>
+        </div>
+        <div>
+          <img src="Diseños/servicio.jpg" alt="Te sentirás en casa con este servicio">
+          <h2>Te sentirás en casa con este servicio</h2>
+        </div>
+        <div>
+          <img src="Diseños/comodidad.jpg" alt="Relájate y quítate el estrés aquí">
+          <h2>Relájate y quítate el estrés aquí</h2>
+        </div>
+        <div>
+          <img src="Diseños/natural.jpg" alt="Cuartos más cercanos al mar">
+          <h2>Cuartos más cercanos al mar</h2>
+        </div>
+      </div>
+      <button class="carrusel-button next">&#10095;</button>
+    </div>
 
-  <script> actualizarReloj(); </script>
+    <!-- Redes sociales -->
+    <ul class="social">
+      <li><a href="#"><img src="facebook.png" alt="Facebook"></a></li>
+      <li><a href="#"><img src="instagram.png" alt="Instagram"></a></li>
+      <li><a href="#"><img src="twitter.png" alt="Twitter"></a></li>
+    </ul>
+  </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const items = document.querySelectorAll('.carrusel-items img');
+  const prevButton = document.querySelector('.carrusel-button.prev');
+  const nextButton = document.querySelector('.carrusel-button.next');
+  let currentIndex = 1; // Se inicia en la imagen central
+
+  function updateCarousel() {
+    items.forEach((img, index) => {
+      img.classList.remove('current', 'previous', 'next');
+      
+      if (index === currentIndex) {
+        img.classList.add('current');
+      } else if (index === (currentIndex - 1 + items.length) % items.length) {
+        img.classList.add('previous');
+      } else if (index === (currentIndex + 1) % items.length) {
+        img.classList.add('next');
+      }
+    });
+  }
+
+  function moveNext() {
+    currentIndex = (currentIndex + 1) % items.length;
+    updateCarousel();
+  }
+
+  function movePrev() {
+    currentIndex = (currentIndex - 1 + items.length) % items.length;
+    updateCarousel();
+  }
+
+  prevButton.addEventListener('click', movePrev);
+  nextButton.addEventListener('click', moveNext);
+
+  updateCarousel();
+});  </script>
 </body>
 </html>

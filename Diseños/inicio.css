@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;@600display=swap');
+*{
+  padding: 0;
+  margin:0;
+  font-family: 'poppins', sans-serif;
+}
+/*Para la imagen de fondo*/
+.container{
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.386), rgba(0,0,0,0.65)), url(Fondo.jpg);
+
+}
+/*Para el menu*/
+nav{
+  width: 84%;
+  margin:auto;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+ 
+}
+/*El logo*/
+.logo{
+  width: 45px;
+ cursor: pointer;
+}
+/*Posicion del menu*/
+nav ul li{
+  display: inline-block;
+  list-style: none;
+  margin:10px 20px;
+}
+/*originalmente esta el navegador*/
+nav ul li a{
+  text-decoration: none;
+  color:#fff;
+  padding: 5px 20px;
+  border: 1px solid transparent;
+  transition: 0.5s ease;
+}
+
+/*Al seleccionarlo*/
+nav ul li a:hover{
+  color:#000000;
+  background: #fff;
+}
+
+/*En la pagina que esta*/
+nav ul li.active a{
+  color:#000000;
+  background: #fff;
+}
+/*Para el texto de la pagina*/
+.text{
+  margin-top: 100px;
+  margin-left:40px;
+}
+
+.carrusel-items img:hover {
+  transform: scale(1.1); /* Animación de movimiento al pasar el cursor */
+  opacity: 0.8; /* Efecto de desvanecido */
+}
+/*Especificamente para el h2*/
+.text h2{
+  font-size: 60px;
+  font-weight: 800;
+  color:#fff;
+  line-height: 1em; 
+  text-transform: uppercase; 
+  margin-top: 50px; 
+}
+/*Especificamente para el h3*/
+.text h3{
+  font-size: 3em;
+  font-weight: 700;
+  color:#fff;
+  line-height: 1em; 
+  text-transform: uppercase; 
+  margin-top: 50px; 
+}
+/*Especificamente para el parrafo*/
+.text p{
+  font-size: 1.1em;
+  color:#fff;
+  margin: 20px 0;
+  font-weight: 400;
+  max-width: 700px;
+  margin-top: 50px; 
+}
+/*Especificamente para el boton*/
+
+/*Para las redes sociales*/
+
+.social {
+  position: absolute;
+  bottom: 20px; /* Ajusta la posición más abajo */
+  left: 85px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*Para cada icono*/
+.social li{
+  list-style: none;
+ 
+}
+.social li a{
+display: inline-block;
+margin-right: 20px;
+filter:invert(1);
+transform: scale(0.5);
+transition: 0.5s;
+}
+.social li a:hover{
+  transform: scale(0.5) translateY(-15px);
+}
+.carrusel-items img {
+  width: 70%; /* Ajusta el tamaño de las imágenes */
+  flex-shrink: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Agrega sombreado */
+  transform: scale(0.5) translateY(-15px);
+}
+h2{
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px; /* Tamaño pequeño */
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Agrega un efecto de sombra elegante */
+}
+ 
