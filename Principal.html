@@ -5,54 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hotel Olas de Libertad</title>
   <link rel="stylesheet" href="Diseños/inicio.css">
-  <style>
-    /* Estilos del carrusel */
- 
-  .carrusel {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    max-width: 800px;
-    margin: auto;
-  }
 
-  .carrusel-items {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .carrusel-items div {
-    position: absolute;
-    transition: opacity 1s ease-in-out;
-  }
-
-
-  .carrusel-items img.current {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-
-  .carrusel-items img.previous, .carrusel-items img.next {
-    opacity: 0.7;
-  }
-
-  .carrusel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10;
-  }
-
-  .carrusel-button.prev { left: 10px; }
-  .carrusel-button.next { right: 10px; }
-
-  </style>
 </head>
 <body>
 
@@ -74,41 +27,41 @@
     <div class="text">
       <h2>Hotel Olas de Libertad</h2>
       <h3>¿Cansado de la rutina? ¡Escapate a este Paraiso! </h3>
-      <p>Disfruta de la tranquilidad y la belleza de la naturaleza en nuestro hotel. Ofrecemos habitaciones cómodas y servicios excepcionales para que tu estancia sea inolvidable.</p>
+      <p>Disfruta de la tranquilidad y la belleza de la naturaleza en nuestro hotel. <br>Ofrecemos habitaciones cómodas y servicios excepcionales para que tu estancia sea inolvidable.</p>
     </div>
 
     <!-- Carrusel de imágenes -->
     <div class="carrusel">
-      <button class="carrusel-button prev">&#10094;</button>
-      <div class="carrusel-items">
-        <div>
-          <img src="Diseños/cuarto.jpg" alt="Cuartos de lujo">
-          <h2>Cuartos de lujo</h2>
+        <div class="carrusel-items">
+            <div class="carrusel-item">
+                <img src="Diseños/Vista.jpg" alt="Imagen 1">
+                <p>De las mejores vistas</p>
+            </div>
+            <div class="carrusel-item">
+                <img src="Diseños/comida.jpg" alt="Imagen 2">
+                <p>De la mejor comida</p>
+            </div>
+            <div class="carrusel-item">
+                <img src="Diseños/comodidad.jpg" alt="Imagen 3">
+                <p>Sobra la comodidad</p>
+            </div>
+            <div class="carrusel-item">
+                <img src="Diseños/servicio.jpg" alt="Imagen 4">
+                <p>Más que increíble servicio</p>
+            </div>
+            <div class="carrusel-item">
+                <img src="Diseños/cuarto.jpg" alt="Imagen 5">
+                <p>Cuartos hermosos</p>
+            </div>
+            <div class="carrusel-item">
+                <img src="Diseños/natural.jpg" alt="Imagen 6">
+                <p>Cerca de la playa</p>
+            </div>
         </div>
-        <div>
-          <img src="Diseños/Vista.jpg" alt="De las mejores vistas">
-          <h2>De las mejores vistas</h2>
-        </div>
-        <div>
-          <img src="Diseños/comida.jpg" alt="Para chuparse los dedos">
-          <h2>Para chuparse los dedos</h2>
-        </div>
-        <div>
-          <img src="Diseños/servicio.jpg" alt="Te sentirás en casa con este servicio">
-          <h2>Te sentirás en casa con este servicio</h2>
-        </div>
-        <div>
-          <img src="Diseños/comodidad.jpg" alt="Relájate y quítate el estrés aquí">
-          <h2>Relájate y quítate el estrés aquí</h2>
-        </div>
-        <div>
-          <img src="Diseños/natural.jpg" alt="Cuartos más cercanos al mar">
-          <h2>Cuartos más cercanos al mar</h2>
-        </div>
-      </div>
-      <button class="carrusel-button next">&#10095;</button>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
     </div>
-
+    
     <!-- Redes sociales -->
     <ul class="social">
       <li><a href="#"><img src="facebook.png" alt="Facebook"></a></li>
@@ -116,41 +69,43 @@
       <li><a href="#"><img src="twitter.png" alt="Twitter"></a></li>
     </ul>
   </div>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const items = document.querySelectorAll('.carrusel-items img');
-  const prevButton = document.querySelector('.carrusel-button.prev');
-  const nextButton = document.querySelector('.carrusel-button.next');
-  let currentIndex = 1; // Se inicia en la imagen central
 
-  function updateCarousel() {
-    items.forEach((img, index) => {
-      img.classList.remove('current', 'previous', 'next');
-      
-      if (index === currentIndex) {
-        img.classList.add('current');
-      } else if (index === (currentIndex - 1 + items.length) % items.length) {
-        img.classList.add('previous');
-      } else if (index === (currentIndex + 1) % items.length) {
-        img.classList.add('next');
-      }
-    });
-  }
+  <script>
+ document.addEventListener("DOMContentLoaded", () => {
+    const itemsContainer = document.querySelector(".carrusel-items");
+    const items = document.querySelectorAll(".carrusel-item");
+    const prevButton = document.querySelector(".prev");
+    const nextButton = document.querySelector(".next");
 
-  function moveNext() {
-    currentIndex = (currentIndex + 1) % items.length;
+    let currentIndex = 0;
+
+    function updateCarousel() {
+        itemsContainer.style.transform = `translateX(${-currentIndex * 100}%)`;
+    }
+
+    function moveNext() {
+        if (currentIndex === items.length - 1) {
+            currentIndex = 0; // Reiniciar al inicio
+        } else {
+            currentIndex++;
+        }
+        updateCarousel();
+    }
+
+    function movePrev() {
+        if (currentIndex === 0) {
+            currentIndex = items.length - 1; // Ir al último
+        } else {
+            currentIndex--;
+        }
+        updateCarousel();
+    }
+
+    nextButton.addEventListener("click", moveNext);
+    prevButton.addEventListener("click", movePrev);
+
     updateCarousel();
-  }
-
-  function movePrev() {
-    currentIndex = (currentIndex - 1 + items.length) % items.length;
-    updateCarousel();
-  }
-
-  prevButton.addEventListener('click', movePrev);
-  nextButton.addEventListener('click', moveNext);
-
-  updateCarousel();
-});  </script>
+});
+  </script>
 </body>
 </html>
